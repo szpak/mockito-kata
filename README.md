@@ -1,54 +1,53 @@
 # Mockito Kata
 
-## Wprowadzenie
+## Introduction
 
-Projekt jest budowany z wykorzystaniem narzędzia [Gradle](http://www.gradle.org/), jednak dzięki zastosowaniu wrappera
-nie jest konieczna jego wcześniejsza instalacja.
+This project is built with [Gradle](http://www.gradle.org/), but thanks to
+used wrapper it is not needed to have Gradle installed manually in the system.
 
-Proste zbudowanie i wykonanie testów:
+Simple build and test execution:
 
     ./gradlew check
 
-(na platformie Windows zamiast gradlew należy użyć gradlew.bat)
+(on Windows `gradlew.bat` should be used instead of `gradlew`)
 
-## Integracja z IDE
+## IDE integration
 
 ### Idea 13
 
-Import do IntelliJ Idea 13: File -> Import Project.
+Import to IntelliJ Idea 13: `File -> Import Project`.
 
 ### Idea 12
 
-Import do IntelliJ Idea 12:
+Import to IntelliJ Idea 12:
 
     ./gradlew idea
 
-i potem otworzenie pliku .ipr przez File->Open
+and later open generated `.ipr` file with `File -> Open`
 
 ### Eclipse
 
-Import do Eclipse:
+Import to Eclipse:
 
     ./gradlew eclipse
 
-i potem File -> Import -> Existing Project Into Workspace
+i later File -> Import -> Existing Project Into Workspace
 
-## Dodawanie zależności
+## Dependencies
 
-### Ogólnie
+### General
 
-Gradle umie współpracować z repozytoriami Maven (w tym Central) oraz Ivy.
-W celu wprowadzenia zależności należy dodać do pliku build.gradle linię z
-żądanym artefaktem. Na przykład:
+Gradle can use interact with Maven repositories (including Central) and Ivy.
+In order to introduce a new test dependency it is required to add a proper line
+in `build.gradle`. For example:
 
         testCompile 'org.assertj:assertj-core:1.5.0'
 
-W celu dodania zależności o zasięgu prodykcyjnym (nie testowym) należy
-zamiast ```testCompile``` użyć ```compile```.
+For a dependency in a production scope ```testCompile``` should be replaced with ```compile```.
 
 ### IDE
 
-Aby zmiany były widoczne w IDE należy dokonać dodatkowych czynności.
+To make a new dependency visible in IDE it is required to perform an additional action.
 
 #### Idea 13
 
@@ -62,7 +61,7 @@ Gradle -> Refresh all Gradle projects
 
     ./gradlew eclipseClasspath
 
-## Informacje licencyjne
+## License
 
-Autor: [Marcin Zajączkowski](http://blog.solidsoft.info/). Kod jest dostępny na
-[licencji Apache w wersji 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).
+Author: [Marcin Zajączkowski](http://blog.solidsoft.info/). This code is available
+under the terms of the [Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).
