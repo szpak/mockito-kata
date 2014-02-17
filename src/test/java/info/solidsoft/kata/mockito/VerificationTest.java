@@ -3,12 +3,12 @@ package info.solidsoft.kata.mockito;
 import org.mockito.InOrder;
 import org.testng.annotations.Test;
 
+import static org.mockito.AdditionalMatchers.gt;
 import static org.mockito.Mockito.*;
 
 @Test
 public class VerificationTest {
 
-    @Test
     public void shouldVerifyMethodCalls() {
         //given
         TacticalStation tacticalStationMock = mock(TacticalStation.class);
@@ -22,7 +22,6 @@ public class VerificationTest {
         verify(operationsStation, times(2)).doSelfCheck();
     }
 
-    @Test
     public void shouldVerifyInOrderThroughDifferentMocks() {
         //given
         TacticalStation tacticalStationMock = mock(TacticalStation.class);
@@ -36,5 +35,14 @@ public class VerificationTest {
         inOrder.verify(operationsStation).doSelfCheck();
         inOrder.verify(tacticalStationMock).doSelfCheck();
         inOrder.verify(operationsStation).doSelfCheck();
+    }
+
+    public void shouldVerifyWithSimpleArgumentMatching() {
+        //given
+        TacticalStation tacticalStationMock = mock(TacticalStation.class);
+        //when
+        tacticalStationMock.fireTorpedo(5);
+        //then
+        verify(tacticalStationMock).fireTorpedo(gt(3));
     }
 }

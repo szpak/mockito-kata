@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.willDoNothing;
 import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Matchers.anyInt;
@@ -17,6 +18,19 @@ public class SpyingRealObjectTest {
 
     private static final int ORIGINAL_COORDINATE1 = 142;
     private static final int NEW_COORDINATE1 = 210;
+
+    @Test(expectedExceptions = IndexOutOfBoundsException.class)
+    public void shouldFailOnImproperSpyStubbing() {
+        //given
+        //given
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> spiedList = spy(list);
+        given(spiedList.get(0)).willReturn(3);  //Wrong spy stubbing - DO NOT do this!
+        //when
+        Integer readValue = spiedList.get(0);
+        //then
+        assertThat(readValue).isEqualTo(3);
+    }
 
     public void shouldNotCallOriginalMethod() {
         //given
